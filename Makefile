@@ -1,10 +1,8 @@
 all: hello
 
-libs:
+libs/libcore.rlib:
 	mkdir -p libs
-
-libcore.rlib: libcore libs
 	rustc --target x86_64-unknown-sortix-gnu libcore/lib.rs -o libs/libcore.rlib
 
-hello: libcore.rlib hello.rs
+hello: libs/libcore.rlib hello.rs
 	rustc --target x86_64-unknown-sortix-gnu -Llibs/ hello.rs -o hello
