@@ -1,4 +1,4 @@
-all: hello
+all: hello mandelbrot
 
 libs/libcore.rlib:
 	mkdir -p libs
@@ -6,3 +6,6 @@ libs/libcore.rlib:
 
 hello: libs/libcore.rlib hello.rs
 	rustc --target x86_64-unknown-sortix-gnu -Llibs/ hello.rs -o hello
+
+mandelbrot: libs/libcore.rlib mandelbrot.rs
+	rustc --target x86_64-unknown-sortix-gnu -Llibs/ mandelbrot.rs -o mandelbrot
